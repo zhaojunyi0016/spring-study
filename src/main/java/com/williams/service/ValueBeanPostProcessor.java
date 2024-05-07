@@ -1,12 +1,14 @@
 package com.williams.service;
 
-import com.spring.BeanPostProcessor;
-import com.spring.Component;
+import com.spring.annotation.Component;
+import com.spring.core.BeanPostProcessor;
 
 import java.lang.reflect.Field;
 
 /**
- * @author 周瑜
+ * 每个 BeanPostProcessor 是针对所有 Bean 的
+ *
+ * @author Williams
  */
 @Component
 public class ValueBeanPostProcessor implements BeanPostProcessor {
@@ -14,11 +16,12 @@ public class ValueBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) {
 
+        System.out.println("初始化前..");
         for (Field field : bean.getClass().getDeclaredFields()) {
-            if (field.isAnnotationPresent(Value.class)) {
+            if (field.isAnnotationPresent(WilliamsValue.class)) {
                 field.setAccessible(true);
                 try {
-                    field.set(bean, field.getAnnotation(Value.class).value());
+                    field.set(bean, field.getAnnotation(WilliamsValue.class).value());
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }

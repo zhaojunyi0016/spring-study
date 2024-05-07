@@ -1,12 +1,23 @@
-package com.spring;
+package com.spring.core;
 
 /**
- * @author 周瑜
+ * @author Williams
  */
 public class BeanDefinition {
 
+    /**
+     * 类的类型
+     */
     private Class type;
+
+    /**
+     * 作用域 singleton:单例  prototype:多例
+     */
     private String scope;
+
+    /**
+     * 是否懒加载
+     */
     private boolean isLazy;
 
     public Class getType() {

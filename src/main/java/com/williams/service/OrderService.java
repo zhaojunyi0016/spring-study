@@ -1,6 +1,6 @@
 package com.williams.service;
 
-import com.spring.Component;
+import com.spring.annotation.Component;
 
 /**
  * @author Williams
@@ -10,6 +10,6 @@ import com.spring.Component;
 public class OrderService {
 
     public void test() {
-        System.out.println("test");
+        System.out.println("OrderService..test");
     }
 }

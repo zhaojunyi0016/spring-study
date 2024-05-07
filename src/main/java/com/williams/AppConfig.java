@@ -1,6 +1,6 @@
 package com.williams;
 
-import com.spring.ComponentScan;
+import com.spring.annotation.ComponentScan;
 
 /**
  * @author Williams

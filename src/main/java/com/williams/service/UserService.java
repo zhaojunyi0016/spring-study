@@ -1,17 +1,20 @@
 package com.williams.service;
 
-import com.spring.*;
+import com.spring.annotation.Autowired;
+import com.spring.annotation.Component;
+import com.spring.core.BeanNameAware;
+import com.spring.core.InitializingBean;
 
 /**
  * @author Williams
  */
 @Component
-public class UserService implements UserInterface, BeanNameAware {
+public class UserService implements UserInterface, BeanNameAware, InitializingBean {
 
     @Autowired
     private OrderService orderService;
 
-    @Value("xxx")
+    @WilliamsValue("xxx")
     private String test;
 
 
@@ -23,6 +26,13 @@ public class UserService implements UserInterface, BeanNameAware {
     }
 
     public void test() {
+        System.out.println(orderService);
         System.out.println(beanName);
+        System.out.println("字段 test =" + test);
+    }
+
+    @Override
+    public void afterPropertiesSet() {
+        System.out.println("初始化...调用 afterPropertiesSet");
     }
 }
